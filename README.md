@@ -82,7 +82,7 @@ Now, `THAT` part
 {
   "who": "dad",
   "location": "Office",
-  "EnteredOrExited":, {{EnteredOrExited}}
+  "EnteredOrExited": {{EnteredOrExited}}
 }
 ```
 
