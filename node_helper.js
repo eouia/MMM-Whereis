@@ -17,7 +17,7 @@ module.exports = NodeHelper.create({
     })
   },
 
-  socektNotificationReceived:(noti, payload) {
+  socektNotificationReceived: function(noti, payload) {
     if (noti == "SHELL_EXEC") {
       exec (payload, (e,so,se)=> {
         console.log("[WHEREIS] shellExec command:", payload)
