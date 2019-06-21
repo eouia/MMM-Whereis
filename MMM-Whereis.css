@@ -23,9 +23,25 @@
   color:#999;
 }
 
+#WHEREIS .item.Entered .locationContainer .exit {
+  display:none;
+}
+
+#WHEREIS .item.Exited .locationContainer .enter {
+  display:none;
+}
+
+#WHEREIS .locationContainer {
+  text-align:right;
+  width:200px;
+}
+
+#WHEREIS .locationContainer * {
+  padding-left:5px;
+}
+
 #WHEREIS .item > * {
   padding: 0 5px;
-  text-align:left;
 }
 
 #WHEREIS .unknown:after {
@@ -40,11 +56,10 @@
   text-align:left;
 }
 #WHEREIS .location {
-  width:230px;
   text-align:right;
 }
 #WHEREIS .time {
-  width:400px;
+  width:300px;
   margin-left:48px;
   font-size:80%;
   color:#9CE;

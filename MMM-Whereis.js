@@ -5,6 +5,8 @@ Module.register("MMM-Whereis", {
     iconify: "https://code.iconify.design/1/1.0.2/iconify.min.js",
        //iconify: null,
        //When you use this module with `MMM-CalendarExt2`, `MMM-Spotify`, MMM-Hotword or any other `iconify` used modules together, Set this to null.
+    enterIcon: "icomoon-free:enter",
+    exitIcon: "icomoon-free:exit",
     member: {},
     commands: {},
   },
@@ -27,6 +29,7 @@ Module.register("MMM-Whereis", {
 
   notificationReceived: function(noti, payload, sender) {
     if (noti == "DOM_OBJECTS_CREATED") {
+      this.sendSocketNotification("ESTABLISH_CONNECTION")
       this.refresh()
     }
   },
@@ -50,7 +53,7 @@ Module.register("MMM-Whereis", {
     if (this.config.commands.hasOwnProperty(commandPattern)) {
       command = this.config.commands[commandPattern]
     } else {
-      // do nothing.
+      return
     }
     if (command.hasOwnProperty("notificationExec")) {
       var ex = command.notificationExec
@@ -109,10 +112,26 @@ Module.register("MMM-Whereis", {
         title.id = item.id + "_TITLE"
         title.className = "title"
         title.innerHTML = person.title
-        var loc = document.createElement("div")
+        var locCon = document.createElement("div")
+        locCon.id = item.id + "_LOC_CONTAINER"
+        locCon.className = "locationContainer"
+        if (this.config.enterIcon) {
+          var enter = document.createElement("span")
+          enter.className = "iconify enter"
+          enter.dataset.icon = this.config.enterIcon
+          locCon.appendChild(enter)
+        }
+        if (this.config.exitIcon) {
+          var exit = document.createElement("span")
+          exit.className = "iconify exit"
+          exit.dataset.icon = this.config.exitIcon
+          locCon.appendChild(exit)
+        }
+        var loc = document.createElement("span")
         loc.id = item.id + "_LOCATION"
         loc.className = "location"
         loc.innerHTML = person.location
+        locCon.appendChild(loc)
         var time = document.createElement("div")
         time.id = item.id + "_TIME"
         time.className = "time"
@@ -123,7 +142,7 @@ Module.register("MMM-Whereis", {
           : t.format(this.config.timeFormat)
         item.appendChild(icon)
         item.appendChild(title)
-        item.appendChild(loc)
+        item.appendChild(locCon)
         item.appendChild(time)
         dom.appendChild(item)
       } else {
