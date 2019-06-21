@@ -90,6 +90,102 @@ Now, `THAT` part
 After creation, You should allow your IFTTT app of your smartphone could use your location information always.
 
 
+## Commands.
+You can make a custom command with `who-entered/exited-location` pattern. (e.g: `dad-entered-home`)
+
+### 0. Common
+You can define your custom commands like this;
+```js
+commands: {
+  "who-entered-location": {
+    notificationExec: { ... },
+    // And/Or
+    shellExec: { ... },
+    // And/Or
+    moduleExec: { ... },
+  },
+  ...
+}
+```
+
+### 1. notificationExec
+Command can emit `notification` of MagicMirror. When you need to activate other module with notification, this could.
+```js
+commands: {
+  "dad-entered-home": {
+    notificationExec: {
+      notification: "SHOW_ALERT",
+      payload: {message:"Okaeri, Papa!", timer:2000}
+    }
+  }
+}
+```
+- `notification` : `String` or `callback function(time)` which will return String
+By example; This could emit conditional notification
+```js
+notification: (time) => {
+  if (SOME CONDITION) {
+    return "SOME_NOTIFICATION"
+  } else {
+    return "OTHER_NOTIFICATION"
+  }
+}
+```
+  - `time` is Unix Epoch time (by `Date.now()`)
+- `payload` : Any `Variables`(include Object) could be. Or `callback function(time)` which will return `payload` could be.
+```js
+payload: (time) => {
+  return {"eventTime": time}
+}
+```
+
+## 2. shellExec
+Command can execute some simple shell script (e.g: python or bash script). But it just executes the shell command. Process executed by this is not controllable or manageable. If you need more, make your own module for it.
+```js
+commands: {
+  "dad-exited-home": {
+    shellExec: {
+      exec: "sudo shutdown now"
+    }
+  }
+}
+```
+- `exec`: String or callback function also.
+
+## 3. moduleExec
+Command can also handle module(s) itself.
+```js
+commands: {
+  "mom-exited-home": {
+    moduleExec: {
+      module: ["clock"],
+      exec: (module, time) => {
+        module.hide()
+      }
+    }
+  }
+}
+```
+- `module` : `String` of target module name or `Array` of names of target modules or just `[]`(for all modules). And also could be `callback` function which will return string or array.
+```js
+module: "clock", // This means `clock` module
+module: ["clock"], // same with above.
+module: ["clock", "calendar"] // This means `clock` module and `calendar` module
+module: [], // This means targeting all modules
+module: (time) => { return "clock" },
+module: (time) => { return ["clock", "calendar"]}
+module: (time) => { return [] }
+```
+- `exec` : `callback` function to do its job. Arguments are slightly different with other callbacks.
+```js
+exec: (module, time) => {
+  module.hide()
+}
+```
+  - `module`: would be targeted module(s)
+
+
+
 ## Note.
 -  This module cannot detect "WHERE (S)HE IS NOW" (differnt with module name. :D). It detect "Entry or Exit of People on Specific Location".
 - "unknown" will be displayed until new IFTTT event be received.
