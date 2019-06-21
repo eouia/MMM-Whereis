@@ -57,26 +57,37 @@ Go to IFTTT (https://ifttt.com) and sign in. Then create new app.
 ![screenshot](/screenshot/sc1.png)
 
 ### step 2.
-![screenshot](/screenshot/sc2.png)
+Search `location` and set it as `THIS` of IFTTT
+1. ![screenshot](/screenshot/sc2.png)
+
+2. ![screenshot](/screenshot/sc3.png)
+
+3. ![screenshot](/screenshot/sc4.png)
 
 ### step 3.
-![screenshot](/screenshot/sc3.png)
-
-### step 4.
-![screenshot](/screenshot/sc4.png)
-
-### step 5.
+Now, `THAT` part
 ![screenshot](/screenshot/sc5.png)
 
-### step 6.
+1. Select Webhooks 
 ![screenshot](/screenshot/sc6.png)
 
-### step 7.
-![screenshot](/screenshot/sc7.png)
+2. ![screenshot](/screenshot/sc7.png)
 
-### step 8.
-![screenshot](/screenshot/sc8.png)
+3. ![screenshot](/screenshot/sc8.png)
+ - URL: `Your MagicMirror domain.` + `/whereis` (e.g: `mymirror.com/whereis`) 
+ - Method: `POST`
+ - Content Type: `application/json`
+ - Body :
+ ```json
+{
+  "who": "dad",
+  "location": "Office",
+  "EnteredOrExited":, {{EnteredOrExited}}
+}
+```
 
+### step 4.
+After creation, You should allow your IFTTT app of your smartphone could use your location information always.
 
 
 ## Note.
