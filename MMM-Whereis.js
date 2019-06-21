@@ -1,6 +1,6 @@
 Module.register("MMM-Whereis", {
   defaults: {
-    refreshInterval:1000*60*10,
+    refreshInterval:1000*60,
     timeFormat: "relative", // or "YYYY-MM-DD HH:mm:ss" format
     iconify: "https://code.iconify.design/1/1.0.2/iconify.min.js",
        //iconify: null,
@@ -40,7 +40,8 @@ Module.register("MMM-Whereis", {
         var person = this.member[payload.who]
         person.location = payload.location
         person.lastStatus = payload.EnteredOrExited
-        person.lastTime = payload.OccurredAt
+        person.lastTime = Date.now()
+        this.member[payload.who] = person
         this.refresh()
         var commandName = payload.who + "-" + payload.EnteredOrExited + "-" + payload.location
         this.doCommand(commandName, payload.OccurredAt)
@@ -88,7 +89,13 @@ Module.register("MMM-Whereis", {
   refresh: function() {
     clearTimeout(this.refreshTimer)
     this.refreshTimer = null
-    this.updateDom()
+    this.hide(500)
+
+    setTimeout(()=>{
+      this.updateDom()
+      this.show(500)
+    }, 500)
+
     this.refreshTimer = setTimeout(()=>{
       this.refresh()
     }, this.config.refreshInterval)

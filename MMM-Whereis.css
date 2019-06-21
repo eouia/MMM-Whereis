@@ -15,22 +15,26 @@
   justify-content: flex-start;
 }
 
-#WHEREIS .item.Entered {
+#WHEREIS .item.entered {
   color:#FFF;
 }
 
-#WHEREIS .item.Exited {
+#WHEREIS .item.exited {
   color:#999;
 }
 
-#WHEREIS .item.Entered .locationContainer .exit {
+#WHEREIS .item.entered .locationContainer .exit {
   display:none;
 }
 
-#WHEREIS .item.Exited .locationContainer .enter {
+#WHEREIS .item.exited .locationContainer .enter {
   display:none;
 }
 
+#WHEREIS .item.unknown .locationContainer .enter,
+#WHEREIS .item.unknown .locationContainer .exit {
+  display:none;
+}
 #WHEREIS .locationContainer {
   text-align:right;
   width:200px;
@@ -44,9 +48,9 @@
   padding: 0 5px;
 }
 
-#WHEREIS .unknown:after {
+#WHEREIS .item.unknown .locationContainer:after {
   content: " unknown";
-  width:200px;
+  width:180px;
   color:#999;
   display:inline;
 }
