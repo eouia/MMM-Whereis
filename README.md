@@ -3,7 +3,7 @@ MagicMirror module to display where someone is (with IFTTT)
 
 
 ## Screenshot
-![screenshot]()
+![screenshot](/screenshot/sc.png)
 
 
 ## Installation
@@ -54,20 +54,28 @@ git clone https://github.com/eouia/MMM-Whereis
 ## IFTTT setup
 ### step 1.
 Go to IFTTT (https://ifttt.com) and sign in. Then create new app.
-![]()
+![screenshot](/screenshot/sc1.png)
+
 ### step 2.
-![]()
+![screenshot](/screenshot/sc2.png)
+
 ### step 3.
-![]()
+![screenshot](/screenshot/sc3.png)
+
 ### step 4.
-![]()
+![screenshot](/screenshot/sc4.png)
+
 ### step 5.
-![]()
+![screenshot](/screenshot/sc5.png)
+
 ### step 6.
-![]()
+![screenshot](/screenshot/sc6.png)
+
 ### step 7.
-![]()
+![screenshot](/screenshot/sc7.png)
+
 ### step 8.
+![screenshot](/screenshot/sc8.png)
 
 
 
