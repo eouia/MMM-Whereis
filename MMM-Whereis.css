@@ -1,0 +1,57 @@
+#WHEREIS {
+  color:#FFF;
+  line-height:100%;
+}
+
+#WHEREIS {
+  box-sizing: border-box;
+}
+
+#WHEREIS .item {
+  display:flex;
+  margin-bottom:5px;
+  width:400px;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+}
+
+#WHEREIS .item.Entered {
+  color:#FFF;
+}
+
+#WHEREIS .item.Exited {
+  color:#999;
+}
+
+#WHEREIS .item > * {
+  padding: 0 5px;
+  text-align:left;
+}
+
+#WHEREIS .unknown:after {
+  content: " unknown";
+  width:200px;
+  color:#999;
+  display:inline;
+}
+
+#WHEREIS .title {
+  width:100px;
+  text-align:left;
+}
+#WHEREIS .location {
+  width:230px;
+  text-align:right;
+}
+#WHEREIS .time {
+  width:400px;
+  margin-left:48px;
+  font-size:80%;
+  color:#9CE;
+  text-align:right;
+}
+
+#WHEREIS .unknown .location,
+#WHEREIS .unknown .time {
+  display:none;
+}
