@@ -74,7 +74,7 @@ Now, `THAT` part
 2. ![screenshot](/screenshot/sc7.png)
 
 3. ![screenshot](/screenshot/sc8.png)
- - URL: `Your MagicMirror domain.` + `/whereis` (e.g: `mymirror.com/whereis`) 
+ - URL: `Your MagicMirror domain:port` + `/whereis` (e.g: `mymirror.com:8080/whereis`) 
  - Method: `POST`
  - Content Type: `application/json`
  - Body :
